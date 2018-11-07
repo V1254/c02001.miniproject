@@ -15,7 +15,11 @@ public class Dice {
     }
 
     public int roll(){
-        return this.random.nextInt(sides.getNumberOfSides()) + 1;
+        return this.random.nextInt(getSides()) + 1;
+    }
+
+    public int getSides(){
+        return sides.getNumberOfSides();
     }
 
 
