@@ -24,7 +24,7 @@ public class Game {
         if(target <= dice.getSides()){
             throw new IllegalArgumentException("Pick a Number > Number of Sides in the Dice You Have Chosen");
         }
-        target = target;
+        this.target = target;
     }
 
 
