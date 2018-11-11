@@ -1,3 +1,8 @@
+package Application;
+
+import Model.Dice;
+import Model.Player;
+
 import java.util.Arrays;
 
 public class Game {
@@ -22,14 +27,14 @@ public class Game {
 
     public void setTarget(int target){
         if(target <= dice.getSides()){
-            throw new IllegalArgumentException("Pick a Number > Number of Sides in the Dice You Have Chosen");
+            throw new IllegalArgumentException("Pick a Number > Number of Sides in the Model.Dice You Have Chosen");
         }
         this.target = target;
     }
 
 
     public void run() {
-        System.out.println("Welcome to the Dice Game");
+        System.out.println("Welcome to the Model.Dice Application.Game");
         while (!winner) {
             TakeTurn(player1);
             TakeTurn(player2);
@@ -50,7 +55,7 @@ public class Game {
 
 
     private void printDraw() {
-        System.out.println("The Game Has Ended in a Draw!");
+        System.out.println("The Application.Game Has Ended in a Draw!");
     }
 
 
@@ -113,11 +118,11 @@ public class Game {
 
     private void printLeadingPlayer() {
         if(player1.getScore() == player2.getScore()){
-            System.out.println("Same Score!! No Leading Player");
+            System.out.println("Same Score!! No Leading Model.Player");
             return;
         }
         Player lead = leadingPlayer();
-        System.out.println(String.format("Leading Player: %s", lead.getName()));
+        System.out.println(String.format("Leading Model.Player: %s", lead.getName()));
     }
 
 
