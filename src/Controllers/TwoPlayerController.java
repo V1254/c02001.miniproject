@@ -17,10 +17,22 @@ public class TwoPlayerController {
     @FXML
     Button backButton;
 
+    @FXML
+    Button playButtons;
+
     public void goBack(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Screens/main.fxml"));
         Stage sourceStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         sourceStage.setScene(scene);
     }
+
+    public void startGame(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("/Screens/twoPlayerGameScreen.fxml"));
+        Stage sourceStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        sourceStage.setScene(scene);
+    }
+
+
 }

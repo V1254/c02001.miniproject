@@ -27,7 +27,7 @@
             <TextField id="secondTextField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="253.0" promptText="Score to Reach" />
          </children>
       </VBox>
-      <Button id="playButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="PLAY">
+      <Button id="playButton" fx:id="playButtons" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#startGame" text="PLAY">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>

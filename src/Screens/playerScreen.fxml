@@ -14,7 +14,7 @@
       <TextField fx:id="nameField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="253.0" promptText="Enter A name" />
       <Label alignment="CENTER" text="Target" />
       <TextField alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="253.0" promptText="Score to Reach" />
-      <Button mnemonicParsing="false" text="PLAY">
+      <Button fx:id="playButtons" mnemonicParsing="false" onAction="#startGame" text="PLAY">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
