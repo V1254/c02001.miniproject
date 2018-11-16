@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../StyleSheets/game.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.GameController">
+   <children>
+      <VBox alignment="CENTER" prefWidth="200.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="200.0" spacing="25.0">
+               <children>
+                  <Label text="Player:" textFill="#39a2ae">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Text fx:id="player1Name" fill="#39a2ae" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="200.0" spacing="25.0">
+               <children>
+                  <Label styleClass=".player1" text="Last Roll:" textFill="#39a2ae">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Text fx:id="player1Roll" fill="#39a2ae" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="200.0" spacing="53.0">
+               <children>
+                  <Label text="Score:" textFill="#39a2ae">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Text fx:id="player1Score" fill="#39a2ae" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" prefHeight="63.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <HBox spacing="5.0">
+               <children>
+                  <Label text="Leading Player: ">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Text fx:id="leadingPlayerName" strokeType="OUTSIDE" strokeWidth="0.0" text="Player Name">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" spacing="5.0">
+               <children>
+                  <Label text="Target: ">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="targetLabel" text="50">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox prefWidth="200.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="200.0" spacing="25.0">
+               <children>
+                  <Label fx:id="player2NameLabel" text="Player:" textFill="RED">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Text fx:id="player2Name" fill="RED" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="200.0" spacing="25.0">
+               <children>
+                  <Label fx:id="player2RolLabel" text="Last Roll:" textFill="RED">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Text fx:id="player2Roll" fill="RED" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="200.0" spacing="53.0">
+               <children>
+                  <Label fx:id="player2ScoreLabel" text="Score:" textFill="RED">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Text fx:id="player2Score" fill="RED" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <HBox id="player1DiceArea" alignment="CENTER" prefHeight="206.0" prefWidth="300.0">
+         <children>
+            <ImageView fx:id="player1Dice1" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="player1Dice2" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="player1Dice3" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="206.0" prefWidth="300.0">
+         <children>
+            <ImageView fx:id="player2Dice1" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="player2Dice2" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="player2Dice3" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="300.0">
+         <children>
+            <Button fx:id="player1Play" mnemonicParsing="false" onAction="#rollPlayer1" prefHeight="49.0" prefWidth="92.0" text="Roll" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="300.0">
+         <children>
+            <Button fx:id="player2Play" mnemonicParsing="false" onAction="#rollPlayer2" prefHeight="49.0" prefWidth="92.0" text="Roll" />
+         </children>
+      </HBox>
+   </children>
+</FlowPane>
