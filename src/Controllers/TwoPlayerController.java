@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
@@ -20,6 +21,9 @@ public class TwoPlayerController {
     @FXML
     Button playButtons;
 
+    @FXML
+    TextField player1NameField,player2NameField;
+
     public void goBack(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Screens/main.fxml"));
         Stage sourceStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -28,7 +32,12 @@ public class TwoPlayerController {
     }
 
     public void startGame(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("/Screens/twoPlayerGameScreen.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Screens/twoPlayerGameScreen.fxml"));
+        Parent root = (Parent) loader.load();
+        GameController gm = loader.getController();
+        gm.setTwoPlayerGame(true);
+        gm.setPlayer1Name(player1NameField.getText());
+        gm.setPlayer2Name(player2NameField.getText());
         Stage sourceStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         sourceStage.setScene(scene);

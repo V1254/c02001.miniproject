@@ -14,7 +14,7 @@
       <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="300.0" spacing="12.0" stylesheets="@../StyleSheets/playerScreen.css">
          <children>
             <Label alignment="CENTER" text="Player Name" />
-            <TextField alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="253.0" promptText="Enter A name" />
+            <TextField fx:id="player1NameField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="253.0" promptText="Enter A name" />
             <Label alignment="CENTER" text="Target" />
             <TextField alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="253.0" promptText="Score to Reach" />
          </children>
@@ -22,7 +22,7 @@
       <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="300.0" spacing="12.0" stylesheets="@../StyleSheets/playerScreen.css">
          <children>
             <Label id="secondLabel" alignment="CENTER" text="Player Name" />
-            <TextField id="secondTextField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="253.0" promptText="Enter A name" />
+            <TextField id="secondTextField" fx:id="player2NameField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="253.0" promptText="Enter A name" />
             <Label id="secondLabel" alignment="CENTER" text="Target" />
             <TextField id="secondTextField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="253.0" promptText="Score to Reach" />
          </children>
