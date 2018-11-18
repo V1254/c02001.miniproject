@@ -117,9 +117,10 @@
             <ImageView fx:id="player2Dice3" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </HBox>
-      <HBox alignment="CENTER_RIGHT" prefHeight="91.0" prefWidth="335.0">
+      <HBox alignment="CENTER_RIGHT" prefHeight="91.0" prefWidth="392.0" spacing="10.0">
          <children>
             <Button id="playButton" fx:id="playButton" mnemonicParsing="false" onAction="#playGame" text="Roll" />
+            <Button id="redoMove" fx:id="redoMove" mnemonicParsing="false" text="REDO" />
          </children>
       </HBox>
    </children>
