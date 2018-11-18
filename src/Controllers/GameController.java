@@ -145,8 +145,8 @@ public class GameController implements Initializable {
 
         setPlayer1Images(player1Images);
         setPlayer2Images(player2Images);
-        player1Roll.setText(game.getRollsAsString(player1Rolls));
-        player2Roll.setText(game.getRollsAsString(player2Rolls));
+        player1Roll.setText(game.getRollsAsString(player1Rolls) + "  (+" + game.getScoreFromRolls(player1Rolls) + ")");
+        player2Roll.setText(game.getRollsAsString(player2Rolls) + "  (+" + game.getScoreFromRolls(player2Rolls) + ")");
         updateScore();
 
         if(game.checkWin()){

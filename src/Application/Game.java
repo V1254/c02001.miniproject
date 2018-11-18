@@ -64,7 +64,7 @@ public class Game {
         }
     }
 
-    private int getScoreFromRolls(int[] rolls) {
+    public int getScoreFromRolls(int[] rolls) {
         Arrays.sort(rolls);
         if (rolls[0] == rolls[2]) { // if [x,?,x]  then ? = x in sorted array.
             return 18;
