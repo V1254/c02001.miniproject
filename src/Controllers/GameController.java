@@ -7,12 +7,19 @@ import Model.DiceImage;
 import Model.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -47,6 +54,10 @@ public class GameController implements Initializable {
     DiceImage diceImage;
     Game game;
 
+    //TODO: show dialog when game has ended to restart the game
+    //TODO: find a way to go back to the previous screen
+    //TODO: implement redo functionality.
+
     public GameController(){
         player1 = new Player("Player 1");
         player2 = new Player("Player 2");
@@ -66,7 +77,7 @@ public class GameController implements Initializable {
     }
     /**
      *
-     * @param name
+     * @param name  The name to set for player1.
      */
 
     void setPlayer1Name(String name){
@@ -78,7 +89,7 @@ public class GameController implements Initializable {
 
     /**
      *
-     * @param name
+     * @param name   The name to set for player2.
      */
 
     void setPlayer2Name(String name){
@@ -89,9 +100,17 @@ public class GameController implements Initializable {
         this.player2.setName(name);
     }
 
+    /**
+     * @param b  set to true if two players.
+     */
+
     void setTwoPlayerGame(boolean b){
         twoPlayerGame = b;
     }
+
+    /**
+     *  Sets the player names on the twoPlayerGameScreen.
+     */
 
     void setUpPlayerNames(){
         player1Name.setText(this.player1.getName());
@@ -99,7 +118,7 @@ public class GameController implements Initializable {
     }
 
     /**
-     *
+     *  Updates the score values for each player in the fxml.
      */
 
 
@@ -109,17 +128,13 @@ public class GameController implements Initializable {
     }
 
     /**
-     *
-     * @param event
+     * handles all the events involved in the game.
+     * @param event  Button Clicks on the 'Roll Button'
      */
 
     public void playGame(ActionEvent event){
 
-        System.out.println(player1.getName());
-        System.out.println(player2.getName());
-        System.out.println(game.getTarget());
         game.TakeTurn(game.getPlayer1());
-
         int[] player1Rolls = game.getLastRolls();
         // loadimage for player1
         List<Image> player1Images = diceImage.getImages(game.getPlayer1().getColor(),player1Rolls);
@@ -133,11 +148,21 @@ public class GameController implements Initializable {
         player1Roll.setText(game.getRollsAsString(player1Rolls));
         player2Roll.setText(game.getRollsAsString(player2Rolls));
         updateScore();
+
+        if(game.checkWin()){
+            playButton.setText("Restart");
+            playButton.setDisable(true);
+            if(game.isDraw()){
+                System.out.println("Game drawed");
+            } else {
+                System.out.println("Winner: " + game.getWinner().getName()); // update to show Dialog to allow the game to be reset.
+            }
+        }
     }
 
     /**
      *
-     * @param player2Images
+     * @param player2Images  The list of images to set in the imageView for player2.
      */
 
     private void setPlayer2Images(List<Image> player2Images) {
@@ -148,7 +173,7 @@ public class GameController implements Initializable {
 
     /**
      *
-     * @param player1Images
+     * @param player1Images  The list of images to set in the imageView for player1.
      */
 
     private void setPlayer1Images(List<Image> player1Images) {
@@ -158,8 +183,8 @@ public class GameController implements Initializable {
     }
 
     /**
-     *
-     * @param target
+     * Only accepts Values >= 6
+     * @param target  The target score to reach for this game play.
      */
 
     void setTarget(String target){
