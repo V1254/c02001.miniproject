@@ -9,7 +9,7 @@ public class Game {
     private Player player1;
     private Player player2;
     private Dice dice;
-    private boolean winner;
+    private Player winner;
     private int target;
     private int[] lastRolls;
     // lazy constructor
@@ -22,7 +22,6 @@ public class Game {
         this.player1 = p1;
         this.player2 = p2;
         this.dice = d;
-        winner = false;
         target = 100;
         lastRolls = new int[3];
     }
@@ -42,63 +41,41 @@ public class Game {
         return player2;
     }
 
-    public Dice getDice() {
-        return dice;
-    }
 
-    public boolean isWinner() {
-        return winner;
-    }
+
 
     public int getTarget() {
         return target;
     }
 
     // change this to take button clicks instead.
-    public void run() {
-        System.out.println("Welcome to the Model.Dice Application.Game");
-        while (!winner) {
-            TakeTurn(player1);
-            TakeTurn(player2);
-            printScores();
-            if (checkWin()) {
-                if (isDraw()) {
-                    printDraw();
-                } else {
-                    printWinner();
-                }
-                break;
-            }
-            printLeadingPlayer();
-            System.out.println("=============");
-        }
-    }
+//    public void run() {
+//        System.out.println("Welcome to the Model.Dice Application.Game");
+//        while (!winner) {
+//            TakeTurn(player1);
+//            TakeTurn(player2);
+//            printScores();
+//            if (checkWin()) {
+//                if (isDraw()) {
+//                    printDraw();
+//                } else {
+//                    printWinner();
+//                }
+//                break;
+//            }
+//            printLeadingPlayer();
+//            System.out.println("=============");
+//        }
+//    }
 
-
-
-    private void printDraw() {
-        System.out.println("The Application.Game Has Ended in a Draw!");
-    }
-
-
-
-    private void printWinner() {
-        Player winner = getWinner();
-        String winnerString = String.format("Congrats %s , You Are THE WINNER!!!!", winner.getName());
-        System.out.println(winnerString);
-    }
-
-
-
-    void rollThreeTimes() {
+    private void rollThreeTimes() {
+        lastRolls = new int[3];
         for (int i = 0; i < 3; i++) {
             lastRolls[i] = dice.roll();
         }
     }
 
-
-
-    int getScoreFromRolls(int[] rolls) {
+    private int getScoreFromRolls(int[] rolls) {
         Arrays.sort(rolls);
         if (rolls[0] == rolls[2]) { // if [x,?,x]  then ? = x in sorted array.
             return 18;
@@ -110,42 +87,17 @@ public class Game {
         return 1;
     }
 
-
-
-    private boolean checkWin() {
-        return player1.getScore() > target || player2.getScore() > target;
-    }
-
-
-
-    private boolean isDraw() {
-        return player2.getScore() > target && player1.getScore() > target;
-    }
-
-
-    private Player leadingPlayer() {
+    public Player getLeadingPlayer() {
         return player2.getScore() > player1.getScore() ? player2 : player1;
     }
 
-
-
-    private void printScores() {
-        String scores = String.format("Scores: %s -> %d | %s -> %d", player1.getName(), player1.getScore(), player2.getName(), player2.getScore());
-        System.out.println(scores);
-    }
-
-
-
-    private void printLeadingPlayer() {
-        if(player1.getScore() == player2.getScore()){
-            System.out.println("Same Score!! No Leading Model.Player");
-            return;
+    public String getLeadingPlayerString() {
+        if (player1.getScore() == player2.getScore()) {
+            return "None!";
         }
-        Player lead = leadingPlayer();
-        System.out.println(String.format("Leading Model.Player: %s", lead.getName()));
+        return getLeadingPlayer().getName();
+
     }
-
-
 
     public void TakeTurn(Player player) {
         rollThreeTimes();
@@ -153,7 +105,7 @@ public class Game {
         switchTurns();
     }
 
-    void switchTurns(){
+    private void switchTurns(){
         if(player1.isTurn()){
             player2.setTurn(true);
             player1.setTurn(false);
@@ -170,9 +122,13 @@ public class Game {
 
 
 
-    public String getRollsAsString() {
-        String formatted = String.format("[%d,%d,%d]",lastRolls[0],lastRolls[1],lastRolls[2]);
+    public String getRollsAsString(int[] rollls) {
+        String formatted = String.format("[%d,%d,%d]",rollls[0],rollls[1],rollls[2]);
         return formatted;
+    }
+
+    public int[] getLastRolls(){
+        return lastRolls;
     }
 
 

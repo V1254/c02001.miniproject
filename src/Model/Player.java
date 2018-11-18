@@ -4,6 +4,7 @@ public class Player {
     private String name;
     private int score;
     private boolean turn;
+    private String color;
 
     public Player(){
         this("Anonymous");
@@ -37,5 +38,13 @@ public class Player {
 
     public void setTurn(boolean turn) {
         this.turn = turn;
+    }
+
+    public void setColor(String s){
+        this.color = s;
+    }
+
+    public String getColor(){
+        return this.color;
     }
 }

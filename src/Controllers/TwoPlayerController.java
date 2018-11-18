@@ -1,5 +1,8 @@
 package Controllers;
 
+import Application.Game;
+import Model.Dice;
+import Model.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
