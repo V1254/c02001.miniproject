@@ -28,7 +28,7 @@ public class Game {
 
     public void setTarget(int target){
         if(target <= dice.getSides()){
-            throw new IllegalArgumentException("Pick a Number > Number of Sides in the Model.Dice You Have Chosen");
+            throw new IllegalArgumentException("Pick a Number > Number of sides in the dice");
         }
         this.target = target;
     }

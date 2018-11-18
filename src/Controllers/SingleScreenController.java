@@ -39,6 +39,7 @@ public class SingleScreenController {
         gm.setTwoPlayerGame(false);
         gm.setPlayer1Name(nameField.getText());
         gm.setPlayer2Name("");
+        gm.setUpPlayerNames();
         Stage sourceStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         sourceStage.setScene(scene);

@@ -12,36 +12,13 @@
 }
 
 #player1NameBox,#player1RollBox,#player1ScoreBox{
-     -fx-border-width: 0px 0px 3px 0px;
+     -fx-border-width: 0px 3px 3px 0px;
      -fx-border-style: dotted;
      -fx-border-color: white;
  }
 
 #player2NameBox,#player2RollBox,#player2ScoreBox{
     -fx-border-width: 0px 0px 3px 0px;
-    -fx-border-style: dotted;
-    -fx-border-color: white;
-}
-
-#player1Fields{
-    -fx-border-width: 0px 2px 0px 0px;
-    -fx-border-style: dotted;
-    -fx-border-color: white;
-}
-#player2Fields{
-    -fx-border-width: 0px 0px 0px 2px;
-    -fx-border-style: dotted;
-    -fx-border-color: white;
-}
-
-#leadingPlayerBox{
-    -fx-border-width: 2px 0px 2px 0x;
-    -fx-border-style: dotted;
-    -fx-border-color: white;
-}
-
-#targetBox{
-    -fx-border-width: 2px 0px 2px 0x;
     -fx-border-style: dotted;
     -fx-border-color: white;
 }

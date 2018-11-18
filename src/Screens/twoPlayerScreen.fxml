@@ -11,27 +11,33 @@
 
 <FlowPane alignment="CENTER" columnHalignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../StyleSheets/twoPlayerScreen.css" vgap="30.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.TwoPlayerController">
    <children>
-      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="300.0" spacing="12.0" stylesheets="@../StyleSheets/playerScreen.css">
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" spacing="12.0" stylesheets="@../StyleSheets/playerScreen.css">
          <children>
             <Label alignment="CENTER" text="Player Name" />
             <TextField fx:id="player1NameField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="253.0" promptText="Enter A name" />
-            <Label alignment="CENTER" text="Target" />
-            <TextField alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="253.0" promptText="Score to Reach" />
          </children>
       </VBox>
-      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="300.0" spacing="12.0" stylesheets="@../StyleSheets/playerScreen.css">
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" spacing="12.0" stylesheets="@../StyleSheets/playerScreen.css">
          <children>
             <Label id="secondLabel" alignment="CENTER" text="Player Name" />
             <TextField id="secondTextField" fx:id="player2NameField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="253.0" promptText="Enter A name" />
-            <Label id="secondLabel" alignment="CENTER" text="Target" />
-            <TextField id="secondTextField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="253.0" promptText="Score to Reach" />
          </children>
       </VBox>
-      <Button id="playButton" fx:id="playButtons" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#startGame" text="PLAY">
-         <font>
-            <Font name="System Bold" size="17.0" />
-         </font>
-      </Button>
+      <VBox alignment="CENTER" prefHeight="139.0" prefWidth="257.0" spacing="30.0">
+         <children>
+            <VBox alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" text="Target" />
+                  <TextField fx:id="targetScore" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="253.0" promptText="Score to Reach" />
+               </children>
+            </VBox>
+            <Button id="playButton" fx:id="playButtons" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#startGame" text="PLAY">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
       <HBox alignment="CENTER_LEFT" prefWidth="600.0">
          <FlowPane.margin>
             <Insets />

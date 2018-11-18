@@ -40,64 +40,67 @@ public class GameController implements Initializable {
     @FXML
     Text leadingPlayerName;
 
-    private boolean twoPlayerGame = true;
+    private boolean twoPlayerGame;
+    private Player player1;
+    private Player player2;
 
     DiceImage diceImage;
     Game game;
 
-    String name1;
-    String name2;
+    public GameController(){
+        player1 = new Player("Player 1");
+        player2 = new Player("Player 2");
+        twoPlayerGame = true;
+        diceImage = new DiceImage();
 
+    }
 
-    int score = 0;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        diceImage = new DiceImage();
-        Player player1 = new Player(player1Name.getText());
-        player1.setTurn(true);
-        player1.setColor("red");
-        player1.setName(player1Name.getText());
-        Player player2 = new Player(player2Name.getText());
-        player2.setColor("blue");
         game = new Game(new Dice(),player1,player2);
-//        targetLabel.setText(game.getTarget() + "");
-        setUpFields();
+        player1.setTurn(true);
+        player1.setColor("blue");
+        player2.setColor("red");
     }
+    /**
+     *
+     * @param name
+     */
 
-    void setGame(Game game){
-        this.game = game;
-    }
-
-
-    void setPlayer1Name(String x){
-        if(x.isEmpty()){
-            this.player1Name.setText("Anonymous");
+    void setPlayer1Name(String name){
+        if(name.isEmpty()){
             return;
         }
-        this.player1Name.setText(x);
+        this.player1.setName(name);
     }
 
-    void setPlayer2Name(String x){
+    /**
+     *
+     * @param name
+     */
+
+    void setPlayer2Name(String name){
         if(!twoPlayerGame){
-            this.player2Name.setText("Computer");
+            this.player2.setName("Computer");
             return;
-        } else if(x.isEmpty()){
-            player2Name.setText("Anonymous");
-            return;
-        }
-        this.player2Name.setText(x);
+        } else if(name.isEmpty()) return;
+        this.player2.setName(name);
     }
 
     void setTwoPlayerGame(boolean b){
         twoPlayerGame = b;
     }
 
-    private void setUpFields(){
-        player1Name.setText(game.getPlayer1().getName());
-        player2Name.setText(game.getPlayer2().getName());
+    void setUpPlayerNames(){
+        player1Name.setText(this.player1.getName());
+        player2Name.setText(this.player2.getName());
     }
+
+    /**
+     *
+     */
 
 
     private void updateScore(){
@@ -105,10 +108,16 @@ public class GameController implements Initializable {
         player2Score.setText(String.valueOf(game.getPlayer2().getScore()));
     }
 
+    /**
+     *
+     * @param event
+     */
+
     public void playGame(ActionEvent event){
 
-        // when clicked
-        // Roll game for both players
+        System.out.println(player1.getName());
+        System.out.println(player2.getName());
+        System.out.println(game.getTarget());
         game.TakeTurn(game.getPlayer1());
 
         int[] player1Rolls = game.getLastRolls();
@@ -126,6 +135,10 @@ public class GameController implements Initializable {
         updateScore();
     }
 
+    /**
+     *
+     * @param player2Images
+     */
 
     private void setPlayer2Images(List<Image> player2Images) {
         player2Dice1.setImage(player2Images.get(0));
@@ -133,10 +146,35 @@ public class GameController implements Initializable {
         player2Dice3.setImage(player2Images.get(2));
     }
 
+    /**
+     *
+     * @param player1Images
+     */
+
     private void setPlayer1Images(List<Image> player1Images) {
         player1Dice1.setImage(player1Images.get(0));
         player1Dice2.setImage(player1Images.get(1));
         player1Dice3.setImage(player1Images.get(2));
+    }
+
+    /**
+     *
+     * @param target
+     */
+
+    void setTarget(String target){
+        try{
+            int value = Integer.valueOf(target);
+            if(value >= 0){
+                this.game.setTarget(value);
+            }
+        } catch (NumberFormatException e){
+            System.out.println("Illegal Number " + e.getMessage());
+        } catch (IllegalArgumentException e){
+            // enter here when value <6 ,
+            game.setTarget(10);
+            System.out.println(e.getMessage());
+        }
     }
 
 }

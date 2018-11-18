@@ -27,6 +27,9 @@ public class TwoPlayerController {
     @FXML
     TextField player1NameField,player2NameField;
 
+    @FXML
+    TextField targetScore;
+
     public void goBack(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Screens/main.fxml"));
         Stage sourceStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -41,6 +44,8 @@ public class TwoPlayerController {
         gm.setTwoPlayerGame(true);
         gm.setPlayer1Name(player1NameField.getText());
         gm.setPlayer2Name(player2NameField.getText());
+        gm.setTarget(targetScore.getText());
+        gm.setUpPlayerNames();
         Stage sourceStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         sourceStage.setScene(scene);

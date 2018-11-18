@@ -9,11 +9,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<FlowPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../StyleSheets/game.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.GameController">
+<FlowPane minHeight="-Infinity" minWidth="-Infinity" prefWidth="600.0" stylesheets="@../StyleSheets/game.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.GameController">
    <children>
       <VBox id="player1Fields" alignment="CENTER" prefWidth="300.0">
          <children>
-            <HBox id="player1NameBox" alignment="CENTER" prefHeight="33.0" prefWidth="200.0" spacing="25.0">
+            <HBox id="player1NameBox" alignment="CENTER" prefWidth="300.0" spacing="25.0">
                <children>
                   <Label text="Player:" textFill="WHITE">
                      <font>
@@ -27,7 +27,7 @@
                   </Text>
                </children>
             </HBox>
-            <HBox id="player1RollBox" alignment="CENTER" prefHeight="34.0" prefWidth="189.0" spacing="25.0">
+            <HBox id="player1RollBox" alignment="CENTER" prefWidth="300.0" spacing="25.0">
                <children>
                   <Label styleClass=".player1" text="Last Roll:" textFill="#fcfcfc">
                      <font>
@@ -41,7 +41,7 @@
                   </Text>
                </children>
             </HBox>
-            <HBox id="player1ScoreBox" alignment="CENTER" prefHeight="37.0" prefWidth="155.0" spacing="53.0">
+            <HBox id="player1ScoreBox" alignment="CENTER" prefWidth="300.0" spacing="53.0">
                <children>
                   <Label text="Score:" textFill="WHITE">
                      <font>
@@ -59,7 +59,7 @@
       </VBox>
       <VBox id="player2Fields" alignment="CENTER_RIGHT" prefWidth="300.0">
          <children>
-            <HBox id="player2NameBox" alignment="CENTER" prefHeight="33.0" prefWidth="219.0" spacing="25.0">
+            <HBox id="player2NameBox" alignment="CENTER" prefWidth="300.0" spacing="25.0">
                <children>
                   <Label fx:id="player2NameLabel" text="Player:" textFill="RED">
                      <font>
@@ -73,7 +73,7 @@
                   </Text>
                </children>
             </HBox>
-            <HBox id="player2RollBox" alignment="CENTER" prefHeight="34.0" prefWidth="200.0" spacing="25.0">
+            <HBox id="player2RollBox" alignment="CENTER" prefWidth="300.0" spacing="25.0">
                <children>
                   <Label fx:id="player2RolLabel" text="Last Roll:" textFill="RED">
                      <font>
@@ -103,23 +103,23 @@
             </HBox>
          </children>
       </VBox>
-      <HBox id="player1DiceArea" alignment="CENTER" prefHeight="206.0" prefWidth="300.0">
+      <HBox id="player1DiceArea" alignment="CENTER">
          <children>
             <ImageView fx:id="player1Dice1" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="player1Dice2" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="player1Dice3" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="206.0" prefWidth="300.0">
+      <HBox alignment="CENTER">
          <children>
             <ImageView fx:id="player2Dice1" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="player2Dice2" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="player2Dice3" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </HBox>
-      <HBox alignment="CENTER_RIGHT" prefHeight="91.0" prefWidth="350.0">
+      <HBox alignment="CENTER_RIGHT" prefHeight="91.0" prefWidth="335.0">
          <children>
-            <Button id="playButton" fx:id="playButton" mnemonicParsing="false" onAction="#playGame" prefHeight="49.0" prefWidth="92.0" text="Roll" />
+            <Button id="playButton" fx:id="playButton" mnemonicParsing="false" onAction="#playGame" text="Roll" />
          </children>
       </HBox>
    </children>
