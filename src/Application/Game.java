@@ -41,32 +41,21 @@ public class Game {
         return player2;
     }
 
-
-
-
     public int getTarget() {
         return target;
     }
 
-    // change this to take button clicks instead.
-//    public void run() {
-//        System.out.println("Welcome to the Model.Dice Application.Game");
-//        while (!winner) {
-//            TakeTurn(player1);
-//            TakeTurn(player2);
-//            printScores();
-//            if (checkWin()) {
-//                if (isDraw()) {
-//                    printDraw();
-//                } else {
-//                    printWinner();
-//                }
-//                break;
-//            }
-//            printLeadingPlayer();
-//            System.out.println("=============");
-//        }
-//    }
+    public boolean checkWin(){
+        return player1.getScore() > target || player2.getScore() > target;
+    }
+
+    public boolean isDraw(){
+        return player1.getScore() > target && player2.getScore() > target;
+    }
+
+    public Player getWinner(){
+        return player1.getScore() > target?  player1 : player2;
+    }
 
     private void rollThreeTimes() {
         lastRolls = new int[3];
@@ -96,7 +85,6 @@ public class Game {
             return "None!";
         }
         return getLeadingPlayer().getName();
-
     }
 
     public void TakeTurn(Player player) {
@@ -114,13 +102,6 @@ public class Game {
             player2.setTurn(false);
         }
     }
-
-
-    private Player getWinner() {
-        return player1.getScore() > target ? player1 : player2;
-    }
-
-
 
     public String getRollsAsString(int[] rollls) {
         String formatted = String.format("[%d,%d,%d]",rollls[0],rollls[1],rollls[2]);
