@@ -1,10 +1,14 @@
 package Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player {
     private String name;
     private int score;
     private boolean turn;
     private String color;
+    private List<int[]> rolls;
 
     public Player(){
         this("Anonymous");
@@ -14,6 +18,7 @@ public class Player {
         this.name = name;
         this.score = 0;
         this.turn = false;
+        rolls = new ArrayList<>();
     }
 
     public String getName() {
@@ -46,5 +51,27 @@ public class Player {
 
     public String getColor(){
         return this.color;
+    }
+
+    public boolean removeLastRoll(){
+        if(rolls.size() == 0){
+            return false;
+        }
+        rolls.remove(rolls.size()-1);
+        return true;
+    }
+
+    public int[] getLastRoll(){
+        return rolls.get(rolls.size()-1);
+    }
+
+    public String getLastRollAsString(){
+        int[] lastRoll = getLastRoll();
+        String formatted = String.format("[%d,%d,%d]",lastRoll[0],lastRoll[1],lastRoll[2]);
+        return formatted;
+    }
+
+    public void addRoll(int[] roll){
+        this.rolls.add(roll);
     }
 }
