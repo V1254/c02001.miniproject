@@ -39,13 +39,7 @@ public class GameController implements Initializable {
 
     // play buttons
     @FXML
-    Button playButton;
-
-    @FXML
-    Label targetLabel;
-
-    @FXML
-    Text leadingPlayerName;
+    Button playButton,redoButton;
 
     private boolean twoPlayerGame;
     private Player player1;
@@ -63,10 +57,7 @@ public class GameController implements Initializable {
         player2 = new Player("Player 2");
         twoPlayerGame = true;
         diceImage = new DiceImage();
-
     }
-
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -134,19 +125,16 @@ public class GameController implements Initializable {
 
     public void playGame(ActionEvent event){
 
-        game.TakeTurn(game.getPlayer1());
-        int[] player1Rolls = game.getLastRolls();
-        // loadimage for player1
-        List<Image> player1Images = diceImage.getImages(game.getPlayer1().getColor(),player1Rolls);
+        game.TakeTurn(player1);
+        List<Image> player1Images = diceImage.getImages(player1.getColor(),player1.getLastRoll());
 
         game.TakeTurn(game.getPlayer2());
-        int[] player2Rolls = game.getLastRolls();
-        List<Image> player2Images = diceImage.getImages(game.getPlayer2().getColor(),player2Rolls);
+        List<Image> player2Images = diceImage.getImages(player2.getColor(),player2.getLastRoll());
 
         setPlayer1Images(player1Images);
         setPlayer2Images(player2Images);
-        player1Roll.setText(game.getRollsAsString(player1Rolls) + "  (+" + game.getScoreFromRolls(player1Rolls) + ")");
-        player2Roll.setText(game.getRollsAsString(player2Rolls) + "  (+" + game.getScoreFromRolls(player2Rolls) + ")");
+        player1Roll.setText(player1.getLastRollAsString() + "  (+" + game.getScoreFromRolls(player1.getLastRoll()) + ")");
+        player2Roll.setText(player2.getLastRollAsString() + "  (+" + game.getScoreFromRolls(player2.getLastRoll()) + ")");
         updateScore();
 
         if(game.checkWin()){
@@ -158,6 +146,10 @@ public class GameController implements Initializable {
                 System.out.println("Winner: " + game.getWinner().getName()); // update to show Dialog to allow the game to be reset.
             }
         }
+    }
+
+    public void redoLastMove(ActionEvent event){
+
     }
 
     /**

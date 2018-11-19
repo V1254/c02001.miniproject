@@ -11,19 +11,16 @@ public class Game {
     private Dice dice;
     private Player winner;
     private int target;
-    private int[] lastRolls;
-    // lazy constructor
+
     public Game() {
         this(new Dice(), new Player("Player1"), new Player("Player2"));
     }
-
 
     public Game(Dice d, Player p1, Player p2) {
         this.player1 = p1;
         this.player2 = p2;
         this.dice = d;
         target = 100;
-        lastRolls = new int[3];
     }
 
     public void setTarget(int target){
@@ -57,15 +54,16 @@ public class Game {
         return player1.getScore() > target?  player1 : player2;
     }
 
-    private void rollThreeTimes() {
-        lastRolls = new int[3];
+    private int[] rollThreeTimes() {
+        int[] rolls = new int[3];
         for (int i = 0; i < 3; i++) {
-            lastRolls[i] = dice.roll();
+            rolls[i] = dice.roll();
         }
+        Arrays.sort(rolls);
+        return rolls;
     }
 
     public int getScoreFromRolls(int[] rolls) {
-        Arrays.sort(rolls);
         if (rolls[0] == rolls[2]) { // if [x,?,x]  then ? = x in sorted array.
             return 18;
         } else if (rolls[0] == rolls[1]) {
@@ -88,8 +86,9 @@ public class Game {
     }
 
     public void TakeTurn(Player player) {
-        rollThreeTimes();
-        player.addScore(getScoreFromRolls(lastRolls));
+        int[] playerRolls = rollThreeTimes();
+        player.addScore(getScoreFromRolls(playerRolls));
+        player.addRoll(playerRolls);
         switchTurns();
     }
 
@@ -101,15 +100,6 @@ public class Game {
             player1.setTurn(true);
             player2.setTurn(false);
         }
-    }
-
-    public String getRollsAsString(int[] rollls) {
-        String formatted = String.format("[%d,%d,%d]",rollls[0],rollls[1],rollls[2]);
-        return formatted;
-    }
-
-    public int[] getLastRolls(){
-        return lastRolls;
     }
 
 
