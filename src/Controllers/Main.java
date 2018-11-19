@@ -8,12 +8,6 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-
-    Scene main;
-    Scene playerScreen;
-    Scene twoPlayerScreen;
-
-
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/Screens/main.fxml"));
