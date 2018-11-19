@@ -102,5 +102,17 @@ public class Game {
         }
     }
 
+    public void undoLastTurn(Player player){
+        // do nothing if the lists are empty.
+        if(player.getRollCount() <=0){
+            return;
+        }
+
+        int [] lastRoll = player.removeLastRoll();
+        int scoreFromLast = getScoreFromRolls(lastRoll);
+        player.reduceScore(scoreFromLast);
+
+    }
+
 
 }

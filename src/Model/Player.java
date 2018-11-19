@@ -53,12 +53,10 @@ public class Player {
         return this.color;
     }
 
-    public boolean removeLastRoll(){
-        if(rolls.size() == 0){
-            return false;
-        }
-        rolls.remove(rolls.size()-1);
-        return true;
+    public int[] removeLastRoll(){
+        int[] last = rolls.get(rolls.size() -1);
+        rolls.remove(last);
+        return last;
     }
 
     public int[] getLastRoll(){
@@ -73,5 +71,13 @@ public class Player {
 
     public void addRoll(int[] roll){
         this.rolls.add(roll);
+    }
+
+    public void reduceScore(int score){
+        this.score-=score;
+    }
+
+    public int getRollCount(){
+        return this.rolls.size();
     }
 }

@@ -50,7 +50,6 @@ public class GameController implements Initializable {
 
     //TODO: show dialog when game has ended to restart the game
     //TODO: find a way to go back to the previous screen
-    //TODO: implement redo functionality.
 
     public GameController(){
         player1 = new Player("Player 1");
@@ -109,16 +108,6 @@ public class GameController implements Initializable {
     }
 
     /**
-     *  Updates the score values for each player in the fxml.
-     */
-
-
-    private void updateScore(){
-        player1Score.setText(String.valueOf(game.getPlayer1().getScore()));
-        player2Score.setText(String.valueOf(game.getPlayer2().getScore()));
-    }
-
-    /**
      * handles all the events involved in the game.
      * @param event  Button Clicks on the 'Roll Button'
      */
@@ -126,58 +115,81 @@ public class GameController implements Initializable {
     public void playGame(ActionEvent event){
 
         game.TakeTurn(player1);
-        List<Image> player1Images = diceImage.getImages(player1.getColor(),player1.getLastRoll());
+        game.TakeTurn(player2);
+        updateFields();
 
-        game.TakeTurn(game.getPlayer2());
-        List<Image> player2Images = diceImage.getImages(player2.getColor(),player2.getLastRoll());
+        // disabled this button and will show a dialog if there's a winner or a draw.
+        checkGame();
+    }
 
-        setPlayer1Images(player1Images);
-        setPlayer2Images(player2Images);
-        player1Roll.setText(player1.getLastRollAsString() + "  (+" + game.getScoreFromRolls(player1.getLastRoll()) + ")");
-        player2Roll.setText(player2.getLastRollAsString() + "  (+" + game.getScoreFromRolls(player2.getLastRoll()) + ")");
-        updateScore();
-
+    private void checkGame(){
         if(game.checkWin()){
             playButton.setText("Restart");
             playButton.setDisable(true);
             if(game.isDraw()){
-                System.out.println("Game drawed");
+                System.out.println("Game drawed"); // replace with dialog
             } else {
-                System.out.println("Winner: " + game.getWinner().getName()); // update to show Dialog to allow the game to be reset.
+                System.out.println("Winner: " + game.getWinner().getName()); // replace with dialog.
             }
         }
     }
 
-    public void redoLastMove(ActionEvent event){
-
+    public void redoLastMove(ActionEvent event) {
+        game.undoLastTurn(player1);
+        game.undoLastTurn(player2);
+        updateFields();
     }
 
-    /**
-     *
-     * @param player2Images  The list of images to set in the imageView for player2.
-     */
+    private void updateFields(){
+        if(player1.getRollCount() == 0 && player2.getRollCount() == 0){
+            // set empty fields
+            player1Roll.setText(" ");
+            player1Score.setText("0");
+            player2Roll.setText(" ");
+            player2Score.setText("0");
 
-    private void setPlayer2Images(List<Image> player2Images) {
-        player2Dice1.setImage(player2Images.get(0));
-        player2Dice2.setImage(player2Images.get(1));
-        player2Dice3.setImage(player2Images.get(2));
+            // set empty imageViews
+            setDefaultImages();
+
+            return;
+        }
+
+        // updating player1 fields
+        player1Roll.setText(player1.getLastRollAsString() + "  (+" + game.getScoreFromRolls(player1.getLastRoll()) + ")");
+        player1Score.setText(String.valueOf(player1.getScore()));
+        setPlayer1Images(player1);
+
+        // player2 fields
+        player2Roll.setText(player2.getLastRollAsString() + "  (+" + game.getScoreFromRolls(player2.getLastRoll()) + ")");
+        player2Score.setText(String.valueOf(player2.getScore()));
+        setPlayer2Images(player2);
     }
 
-    /**
-     *
-     * @param player1Images  The list of images to set in the imageView for player1.
-     */
-
-    private void setPlayer1Images(List<Image> player1Images) {
-        player1Dice1.setImage(player1Images.get(0));
-        player1Dice2.setImage(player1Images.get(1));
-        player1Dice3.setImage(player1Images.get(2));
+    private void setDefaultImages(){
+        player1Dice1.setImage(null);
+        player1Dice2.setImage(null);
+        player1Dice3.setImage(null);
+        player2Dice1.setImage(null);
+        player2Dice2.setImage(null);
+        player2Dice3.setImage(null);
     }
 
-    /**
-     * Only accepts Values >= 6
-     * @param target  The target score to reach for this game play.
-     */
+
+    private void setPlayer2Images(Player player) {
+        List<Image> images = diceImage.getImages(player.getColor(),player.getLastRoll());
+        player2Dice1.setImage(images.get(0));
+        player2Dice2.setImage(images.get(1));
+        player2Dice3.setImage(images.get(2));
+    }
+
+
+    private void setPlayer1Images(Player player) {
+        List<Image> images = diceImage.getImages(player.getColor(),player.getLastRoll());
+        player1Dice1.setImage(images.get(0));
+        player1Dice2.setImage(images.get(1));
+        player1Dice3.setImage(images.get(2));
+    }
+
 
     void setTarget(String target){
         try{
