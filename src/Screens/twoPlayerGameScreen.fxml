@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<FlowPane minHeight="-Infinity" minWidth="-Infinity" prefWidth="600.0" stylesheets="@../StyleSheets/game.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.GameController">
+<FlowPane minWidth="600.0" nodeOrientation="LEFT_TO_RIGHT" prefWrapLength="600.0" stylesheets="@../StyleSheets/game.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.GameController">
    <children>
       <VBox id="player1Fields" alignment="CENTER" prefWidth="300.0">
          <children>
@@ -41,7 +41,7 @@
                   </Text>
                </children>
             </HBox>
-            <HBox id="player1ScoreBox" alignment="CENTER" prefWidth="300.0" spacing="53.0">
+            <HBox id="player1ScoreBox" alignment="CENTER_RIGHT" prefWidth="300.0" spacing="53.0">
                <children>
                   <Label text="Score:" textFill="WHITE">
                      <font>
@@ -53,6 +53,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Text>
+                  <ImageView fx:id="blueLeadImage" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </HBox>
          </children>
@@ -87,7 +88,7 @@
                   </Text>
                </children>
             </HBox>
-            <HBox id="player2ScoreBox" alignment="CENTER" spacing="53.0">
+            <HBox id="player2ScoreBox" alignment="CENTER_RIGHT" prefWidth="300.0" spacing="53.0">
                <children>
                   <Label fx:id="player2ScoreLabel" text="Score:" textFill="RED">
                      <font>
@@ -99,11 +100,12 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Text>
+                  <ImageView fx:id="redLeadImage" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" />
                </children>
             </HBox>
          </children>
       </VBox>
-      <HBox id="player1DiceArea" alignment="CENTER">
+      <HBox id="player1DiceArea" alignment="CENTER" minWidth="300.0">
          <children>
             <ImageView fx:id="player1Dice1" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="player1Dice2" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
@@ -117,11 +119,12 @@
             <ImageView fx:id="player2Dice3" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </HBox>
-      <HBox alignment="CENTER_RIGHT" prefHeight="91.0" prefWidth="392.0" spacing="10.0">
+      <HBox alignment="CENTER_RIGHT" prefHeight="90.0" prefWidth="382.0" spacing="10.0">
          <children>
-            <Button id="playButton" fx:id="playButton" mnemonicParsing="false" onAction="#playGame" text="Roll" />
-            <Button id="redoMove" fx:id="redoButton" mnemonicParsing="false" onAction="#redoLastMove" text="REDO" />
+            <Button id="playButton" fx:id="playButton" mnemonicParsing="false" onAction="#playTurn" text="Roll" />
+            <Button id="undoMove" fx:id="undoButton" mnemonicParsing="false" onAction="#undoLastMove" text="Undo" />
          </children>
       </HBox>
+      <HBox alignment="CENTER" />
    </children>
 </FlowPane>

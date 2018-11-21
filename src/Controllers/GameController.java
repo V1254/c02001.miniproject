@@ -4,22 +4,15 @@ package Controllers;
 import Application.Game;
 import Model.Dice;
 import Model.DiceImage;
+import Model.Faces;
 import Model.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -39,11 +32,15 @@ public class GameController implements Initializable {
 
     // play buttons
     @FXML
-    Button playButton,redoButton;
+    Button playButton,undoButton;
+
+    @FXML
+    ImageView redLeadImage,blueLeadImage;
 
     private boolean twoPlayerGame;
     private Player player1;
     private Player player2;
+    private Player leadPlayer;
 
     DiceImage diceImage;
     Game game;
@@ -71,10 +68,9 @@ public class GameController implements Initializable {
      */
 
     void setPlayer1Name(String name){
-        if(name.isEmpty()){
-            return;
+        if(!name.isEmpty()){
+            this.player1.setName(name);
         }
-        this.player1.setName(name);
     }
 
     /**
@@ -86,8 +82,12 @@ public class GameController implements Initializable {
         if(!twoPlayerGame){
             this.player2.setName("Computer");
             return;
-        } else if(name.isEmpty()) return;
-        this.player2.setName(name);
+        }
+        if(name.equals(player1.getName())){
+            this.player2.setName(name + "2");
+        } else if(!name.isEmpty()){
+            this.player2.setName(name);
+        }
     }
 
     /**
@@ -112,20 +112,19 @@ public class GameController implements Initializable {
      * @param event  Button Clicks on the 'Roll Button'
      */
 
-    public void playGame(ActionEvent event){
-
+    public void playTurn(ActionEvent event){
         game.TakeTurn(player1);
         game.TakeTurn(player2);
         updateFields();
-
-        // disabled this button and will show a dialog if there's a winner or a draw.
         checkGame();
+        setLeadPlayerImage();
     }
 
     private void checkGame(){
         if(game.checkWin()){
             playButton.setText("Restart");
             playButton.setDisable(true);
+            undoButton.setDisable(true);
             if(game.isDraw()){
                 System.out.println("Game drawed"); // replace with dialog
             } else {
@@ -134,9 +133,10 @@ public class GameController implements Initializable {
         }
     }
 
-    public void redoLastMove(ActionEvent event) {
+    public void undoLastMove(ActionEvent event) {
         game.undoLastTurn(player1);
         game.undoLastTurn(player2);
+        setLeadPlayerImage();
         updateFields();
     }
 
@@ -150,7 +150,6 @@ public class GameController implements Initializable {
 
             // set empty imageViews
             setDefaultImages();
-
             return;
         }
 
@@ -172,6 +171,8 @@ public class GameController implements Initializable {
         player2Dice1.setImage(null);
         player2Dice2.setImage(null);
         player2Dice3.setImage(null);
+        redLeadImage.setImage(null);
+        blueLeadImage.setImage(null);
     }
 
 
@@ -205,5 +206,23 @@ public class GameController implements Initializable {
             System.out.println(e.getMessage());
         }
     }
+
+    private void setLeadPlayerImage(){
+        leadPlayer = game.getLeadingPlayer();
+        if(leadPlayer == null){
+            // no lead so set images to default
+            redLeadImage.setImage(null);
+            blueLeadImage.setImage(null);
+        } else {
+            if(leadPlayer.getColor().equals("red")){
+                redLeadImage.setImage(new Image("Images/trophy.png"));
+                blueLeadImage.setImage(null);
+            } else {
+                blueLeadImage.setImage(new Image("Images/trophy.png"));
+                redLeadImage.setImage(null);
+            }
+        }
+    }
+
 
 }
