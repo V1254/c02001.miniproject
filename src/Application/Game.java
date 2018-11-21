@@ -75,31 +75,13 @@ public class Game {
     }
 
     public Player getLeadingPlayer() {
-        return player2.getScore() > player1.getScore() ? player2 : player1;
-    }
-
-    public String getLeadingPlayerString() {
-        if (player1.getScore() == player2.getScore()) {
-            return "None!";
-        }
-        return getLeadingPlayer().getName();
+        return player1.getScore() > player2.getScore() ? player1 : player2.getScore() > player1.getScore() ? player2 : null;
     }
 
     public void TakeTurn(Player player) {
         int[] playerRolls = rollThreeTimes();
         player.addScore(getScoreFromRolls(playerRolls));
         player.addRoll(playerRolls);
-        switchTurns();
-    }
-
-    private void switchTurns(){
-        if(player1.isTurn()){
-            player2.setTurn(true);
-            player1.setTurn(false);
-        } else {
-            player1.setTurn(true);
-            player2.setTurn(false);
-        }
     }
 
     public void undoLastTurn(Player player){
@@ -111,7 +93,6 @@ public class Game {
         int [] lastRoll = player.removeLastRoll();
         int scoreFromLast = getScoreFromRolls(lastRoll);
         player.reduceScore(scoreFromLast);
-
     }
 
 
