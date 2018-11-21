@@ -4,11 +4,11 @@ package Controllers;
 import Application.Game;
 import Model.Dice;
 import Model.DiceImage;
-import Model.Faces;
 import Model.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -126,9 +126,9 @@ public class GameController implements Initializable {
             playButton.setDisable(true);
             undoButton.setDisable(true);
             if(game.isDraw()){
-                System.out.println("Game drawed"); // replace with dialog
+                showDrawDialog();
             } else {
-                System.out.println("Winner: " + game.getWinner().getName()); // replace with dialog.
+                showWinnerDialog(game.getWinner());
             }
         }
     }
@@ -222,6 +222,22 @@ public class GameController implements Initializable {
                 redLeadImage.setImage(null);
             }
         }
+    }
+
+    void showDrawDialog(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION," Game Has Ended in a Draw!! \n\n\n Thanks For Playing " + player1.getName() + " & " + player2.getName());
+        alert.setGraphic(new ImageView(new Image(getClass().getResource("../Images/draw.png").toExternalForm())));
+        alert.setHeaderText(null);
+        alert.setTitle("Draw!!");
+        alert.showAndWait();
+    }
+
+    void showWinnerDialog(Player player){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION,"Congratulations " + player.getName() + " You Are Victorious!!");
+        alert.setGraphic(new ImageView(new Image(getClass().getResource("../Images/winner.png").toExternalForm())));
+        alert.setHeaderText(null);
+        alert.setTitle("Winner!!" );
+        alert.showAndWait();
     }
 
 
