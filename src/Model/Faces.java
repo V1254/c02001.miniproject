@@ -1,6 +1,6 @@
 package Model;
 
-// Number of Model.Faces on the Model.Dice
+// Number of Faces on the Dice
 public enum Faces {
     SIX(6),
     EIGHT(8),
