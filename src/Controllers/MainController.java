@@ -8,14 +8,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-
-import javax.imageio.IIOException;
 import java.io.IOException;
 
 
 public class MainController {
-
-    // TODO: finish controller
 
     @FXML
     Button singleButton;
@@ -29,8 +25,6 @@ public class MainController {
         Stage sourceStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         sourceStage.setScene(scene);
-
-        System.out.println("Single Clicked");
     }
 
     public void handleMultiPlayerAction(ActionEvent event) throws IOException {
@@ -38,7 +32,6 @@ public class MainController {
         Stage sourceStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         sourceStage.setScene(scene);
-        System.out.println("Multi Clicked");
     }
 
 }
