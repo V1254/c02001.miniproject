@@ -20,7 +20,7 @@ public class SingleScreenController {
     Button backButton;
 
     @FXML
-    TextField nameField;
+    TextField nameField,targetField;
 
     @FXML
     Button playButton;
@@ -40,6 +40,7 @@ public class SingleScreenController {
         gm.setPlayer1Name(nameField.getText());
         gm.setPlayer2Name("");
         gm.setUpPlayerNames();
+        gm.setTarget(targetField.getText());
         Stage sourceStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         sourceStage.setScene(scene);
