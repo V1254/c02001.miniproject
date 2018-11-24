@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/Screens/main.fxml"));
-        Scene scene = new Scene(root,600,400);
+        Scene scene = new Scene(root,780,400);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Dice Game");
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/icon.jpg")));
