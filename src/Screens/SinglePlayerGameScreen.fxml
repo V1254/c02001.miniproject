@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -12,16 +13,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="740.0" stylesheets="@../StyleSheets/Maiin.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SinglePlayerGameController">
+<GridPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="780.0" stylesheets="@../StyleSheets/Maiin.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SinglePlayerGameController">
   <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="230.0" minWidth="10.0" prefWidth="85.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="351.0" minWidth="10.0" prefWidth="316.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="230.0" minWidth="10.0" prefWidth="121.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="351.0" minWidth="10.0" prefWidth="319.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="340.0" minWidth="10.0" prefWidth="339.0" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints maxHeight="109.0" minHeight="10.0" prefHeight="109.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="246.0" minHeight="10.0" prefHeight="195.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="171.0" minHeight="10.0" prefHeight="96.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="246.0" minHeight="10.0" prefHeight="164.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="171.0" minHeight="10.0" prefHeight="127.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
       <VBox prefHeight="200.0" prefWidth="250.0" GridPane.columnIndex="1">
@@ -148,13 +149,34 @@
       </HBox>
       <VBox alignment="CENTER" prefHeight="100.0" prefWidth="98.0" spacing="20.0" GridPane.rowIndex="2">
          <children>
-            <Button fx:id="undoButton" mnemonicParsing="false" onAction="#onUndo" prefHeight="37.0" text="UNDO" />
-            <Button fx:id="resetButton" mnemonicParsing="false" onAction="#onReset" prefHeight="40.0" prefWidth="87.0" text="RESET" />
+            <Button fx:id="undoButton" mnemonicParsing="false" onAction="#onUndo" text="Undo">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/undo.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="resetButton" mnemonicParsing="false" onAction="#onReset" text="Reset">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/reset.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
          </children>
       </VBox>
       <HBox alignment="CENTER" prefHeight="96.0" prefWidth="642.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
          <children>
-            <Button fx:id="rollButton" mnemonicParsing="false" onAction="#onRollClick" text="Roll" />
+            <Button fx:id="rollButton" mnemonicParsing="false" onAction="#onRollClick" text="Roll">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/dice.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
          </children>
       </HBox>
    </children>

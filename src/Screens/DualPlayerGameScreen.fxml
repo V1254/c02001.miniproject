@@ -145,7 +145,7 @@
       </HBox>
       <VBox alignment="CENTER" prefHeight="100.0" prefWidth="98.0" spacing="10.0" GridPane.rowIndex="2">
          <children>
-            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#onBack" prefHeight="40.0" prefWidth="110.0" text="BACK">
+            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#onBack" prefHeight="40.0" prefWidth="110.0" text="Back">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -153,7 +153,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="resetButton" mnemonicParsing="false" onAction="#onReset" prefHeight="40.0" prefWidth="112.0" text="RESET">
+            <Button fx:id="resetButton" mnemonicParsing="false" onAction="#onReset" prefHeight="40.0" prefWidth="112.0" text="Reset">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
