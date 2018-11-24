@@ -80,4 +80,12 @@ public class Player {
     public int getRollCount(){
         return this.rolls.size();
     }
+
+    public void setScore(int score){
+        this.score = score;
+    }
+
+    public void setRolls(List<int[]> rolls){
+        this.rolls = rolls;
+    }
 }
