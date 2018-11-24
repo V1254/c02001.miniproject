@@ -23,7 +23,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class DualPlayerGameController implements Initializable {
@@ -130,10 +129,16 @@ public class DualPlayerGameController implements Initializable {
     // set up a warning dialog incase they misclick reset button.
     @FXML
     public void onReset() {
-        game.resetScores();
-        player1RollButton.setDisable(false);
-        setDefaultFields();
-        resetButton.setDisable(true);
+        Alert alert = new Alert(Alert.AlertType.WARNING,"Are you sure, you wan't to Restart The Game?",new ButtonType("Confirm", ButtonBar.ButtonData.YES),new ButtonType("Cancel", ButtonBar.ButtonData.NO));
+        alert.setTitle("Confirm Deletion");
+        alert.setHeaderText(null);
+        alert.showAndWait();
+        if(alert.getResult().getButtonData() == ButtonBar.ButtonData.YES){
+            game.resetScores();
+            player1RollButton.setDisable(false);
+            setDefaultFields();
+            resetButton.setDisable(true);
+        }
     }
 
     @FXML
@@ -208,12 +213,9 @@ public class DualPlayerGameController implements Initializable {
         alert.setGraphic(new ImageView(new Image(getClass().getResource("../Images/draw.png").toExternalForm())));
         alert.setHeaderText(null);
         alert.setTitle("Draw!!");
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.isPresent()) {
-            switch (result.get().getButtonData()) {
-                case YES:
-                    onReset();
-            }
+        alert.showAndWait();
+        if (alert.getResult().getButtonData() == ButtonBar.ButtonData.YES) {
+            resetWithoutDialog();
         }
     }
 
@@ -222,12 +224,9 @@ public class DualPlayerGameController implements Initializable {
         alert.setGraphic(new ImageView(new Image(getClass().getResource("../Images/winner.png").toExternalForm())));
         alert.setHeaderText(null);
         alert.setTitle("Winner!!");
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.isPresent()) {
-            switch (result.get().getButtonData()) {
-                case YES:
-                    onReset();
-            }
+        alert.showAndWait();
+        if (alert.getResult().getButtonData() == ButtonBar.ButtonData.YES) {
+            resetWithoutDialog();
         }
     }
 
@@ -245,6 +244,13 @@ public class DualPlayerGameController implements Initializable {
         player2Dice2.setImage(null);
         player2Dice3.setImage(null);
         player2LeadImage.setImage(null);
+    }
+
+    private void resetWithoutDialog(){
+        game.resetScores();
+        player1RollButton.setDisable(false);
+        setDefaultFields();
+        resetButton.setDisable(true);
     }
 
 }
