@@ -3,13 +3,13 @@ package Application;
 import Model.Dice;
 import Model.Player;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Game {
     private Player player1;
     private Player player2;
     private Dice dice;
-    private Player winner;
     private int target;
 
     public Game() {
@@ -85,7 +85,6 @@ public class Game {
     }
 
     public void undoLastTurn(Player player){
-        // do nothing if the lists are empty.
         if(player.getRollCount() <=0){
             return;
         }
@@ -95,5 +94,11 @@ public class Game {
         player.reduceScore(scoreFromLast);
     }
 
+    public void resetScores(){
+        player1.setScore(0);
+        player2.setScore(0);
+        player1.setRolls(new ArrayList<>());
+        player2.setRolls(new ArrayList<>());
+    }
 
 }
