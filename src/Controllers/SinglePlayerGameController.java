@@ -63,12 +63,10 @@ public class SinglePlayerGameController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         game = new Game(new Dice(), player1, computer);
-        player1.setTurn(true);
         player1.setColor("blue");
         computer.setColor("red");
         undoButton.setDisable(true);
         resetButton.setDisable(true);
-        setUpPlayerNames();
     }
 
     void setPlayer1Name(String name) {
@@ -77,7 +75,7 @@ public class SinglePlayerGameController implements Initializable {
         }
     }
 
-    private void setUpPlayerNames() {
+    void setUpPlayerNames() {
         playerName.setText(this.player1.getName());
         computerName.setText(this.computer.getName());
     }
