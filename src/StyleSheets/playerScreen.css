@@ -38,7 +38,7 @@
 .text-field {
   -fx-background-color: #39a2ae, white, white;
   -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1;
-  -fx-prompt-text-fill: #561f37;
+  /*-fx-prompt-text-fill: #561f37;*/
 }
 
 .text-field:focused {
