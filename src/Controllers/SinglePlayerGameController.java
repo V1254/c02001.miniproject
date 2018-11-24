@@ -129,12 +129,18 @@ public class SinglePlayerGameController implements Initializable {
     }
 
     public void onReset() {
-        game.resetScores();
-        rollButton.setDisable(false);
-        undoButton.setDisable(true);
-        resetButton.setDisable(true);
-        setDefault("player");
-        setDefault("computer");
+        Alert alert = new Alert(Alert.AlertType.WARNING,"Are you sure, you wan't to Restart The Game?",new ButtonType("Confirm", ButtonBar.ButtonData.YES),new ButtonType("Cancel", ButtonBar.ButtonData.NO));
+        alert.setTitle("Confirm Deletion");
+        alert.setHeaderText(null);
+        alert.showAndWait();
+        if(alert.getResult().getButtonData() == ButtonBar.ButtonData.YES){
+            game.resetScores();
+            rollButton.setDisable(false);
+            undoButton.setDisable(true);
+            resetButton.setDisable(true);
+            setDefault("player");
+            setDefault("computer");
+        }
     }
 
     void setDefault(String playerName) {
@@ -216,12 +222,9 @@ public class SinglePlayerGameController implements Initializable {
         alert.setGraphic(new ImageView(new Image(getClass().getResource("../Images/draw.png").toExternalForm())));
         alert.setHeaderText(null);
         alert.setTitle("Draw!!");
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.isPresent()) {
-            switch (result.get().getButtonData()) {
-                case YES:
-                    onReset();
-            }
+        alert.showAndWait();
+        if(alert.getResult().getButtonData() == ButtonBar.ButtonData.YES){
+            resetWithoutDialog();
         }
     }
 
@@ -230,13 +233,19 @@ public class SinglePlayerGameController implements Initializable {
         alert.setGraphic(new ImageView(new Image(getClass().getResource("../Images/winner.png").toExternalForm())));
         alert.setHeaderText(null);
         alert.setTitle("Winner!!");
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.isPresent()) {
-            switch (result.get().getButtonData()) {
-                case YES:
-                    onReset();
-            }
+        alert.showAndWait();
+        if(alert.getResult().getButtonData() == ButtonBar.ButtonData.YES){
+            resetWithoutDialog();
         }
+    }
+
+    private void resetWithoutDialog() {
+        game.resetScores();
+        rollButton.setDisable(false);
+        undoButton.setDisable(true);
+        resetButton.setDisable(true);
+        setDefault("player");
+        setDefault("computer");
     }
 
     void showLoserDialog() {
@@ -244,12 +253,9 @@ public class SinglePlayerGameController implements Initializable {
         alert.setGraphic(new ImageView(new Image(getClass().getResource("../Images/bronze.png").toExternalForm())));
         alert.setHeaderText(null);
         alert.setTitle("You Lose!");
-        Optional<ButtonType> result = alert.showAndWait();
-        if(result.isPresent()){
-            switch (result.get().getButtonData()){
-                case YES:
-                    onReset();
-            }
+        alert.showAndWait();
+        if(alert.getResult().getButtonData() == ButtonBar.ButtonData.YES){
+            resetWithoutDialog();
         }
     }
 

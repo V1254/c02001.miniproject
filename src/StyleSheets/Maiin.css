@@ -42,6 +42,5 @@
 }
 
 .root{
-    /*-fx-background-color: linear-gradient(to left,#414345,#232526);*/
-    -fx-background-color: linear-gradient(to right ,#0F2027,#203A43);
+    -fx-background-color: linear-gradient(to right,#0f0c29,#302b63,#24243e);
 }
