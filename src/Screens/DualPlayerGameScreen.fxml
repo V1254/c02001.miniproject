@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -12,11 +13,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="740.0" stylesheets="@../StyleSheets/Maiin.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DualPlayerGameController">
+<GridPane fx:id="root" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="780.0" stylesheets="@../StyleSheets/Maiin.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DualPlayerGameController">
   <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="230.0" minWidth="10.0" prefWidth="85.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="351.0" minWidth="10.0" prefWidth="316.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="340.0" minWidth="10.0" prefWidth="339.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="230.0" minWidth="10.0" prefWidth="106.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="351.0" minWidth="10.0" prefWidth="337.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="377.0" minWidth="10.0" prefWidth="336.0" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints maxHeight="109.0" minHeight="10.0" prefHeight="109.0" vgrow="SOMETIMES" />
@@ -127,12 +128,8 @@
                </children></HBox>
          </children>
       </VBox>
-      <VBox alignment="CENTER">
-         <children>
-            <ImageView fx:id="backButton" fitHeight="52.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true" />
-         </children>
-      </VBox>
-      <HBox alignment="CENTER" prefHeight="35.0" prefWidth="35.0" spacing="8.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <VBox alignment="CENTER" />
+      <HBox alignment="CENTER" spacing="8.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
             <ImageView fx:id="player1Dice1" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" />
             <ImageView fx:id="player1Dice2" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" />
@@ -146,20 +143,48 @@
             <ImageView fx:id="player2Dice3" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" />
          </children>
       </HBox>
-      <VBox alignment="CENTER" prefHeight="100.0" prefWidth="98.0" spacing="20.0" GridPane.rowIndex="2">
+      <VBox alignment="CENTER" prefHeight="100.0" prefWidth="98.0" spacing="10.0" GridPane.rowIndex="2">
          <children>
-            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#onBack" prefHeight="40.0" prefWidth="80.0" text="BACK" />
-            <Button fx:id="resetButton" mnemonicParsing="false" onAction="#onReset" prefHeight="40.0" prefWidth="87.0" text="RESET" />
+            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#onBack" prefHeight="40.0" prefWidth="110.0" text="BACK">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/backImage.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="resetButton" mnemonicParsing="false" onAction="#onReset" prefHeight="40.0" prefWidth="112.0" text="RESET">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/reset.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
          </children>
       </VBox>
-      <HBox alignment="CENTER" prefHeight="96.0" prefWidth="642.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <HBox alignment="CENTER" prefHeight="96.0" prefWidth="295.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
-            <Button fx:id="player1RollButton" mnemonicParsing="false" onAction="#onPlayer1Roll" text="Roll" />
+            <Button fx:id="player1RollButton" mnemonicParsing="false" onAction="#onPlayer1Roll" text="Roll">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/dice.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="96.0" prefWidth="642.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
          <children>
-            <Button fx:id="player2RollButton" mnemonicParsing="false" onAction="#onPlayer2Roll" text="Roll" />
+            <Button fx:id="player2RollButton" mnemonicParsing="false" onAction="#onPlayer2Roll" text="Roll">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/dice.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
          </children>
       </HBox>
    </children>
