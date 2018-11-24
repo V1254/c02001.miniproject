@@ -38,14 +38,13 @@ public class TwoPlayerController {
     }
 
     public void startGame(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Screens/twoPlayerGameScreen.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Screens/DualPlayerGameScreen.fxml"));
         Parent root = (Parent) loader.load();
-        GameController gm = loader.getController();
-        gm.setTwoPlayerGame(true);
-        gm.setPlayer1Name(player1NameField.getText());
-        gm.setPlayer2Name(player2NameField.getText());
-        gm.setTarget(targetScore.getText());
-        gm.setUpPlayerNames();
+        DualPlayerGameController controller = loader.getController();
+        controller.setPlayer1Name(player1NameField.getText());
+        controller.setPlayer2Name(player2NameField.getText());
+        controller.setTarget(targetScore.getText());
+        controller.setUpPlayerNames();
         Stage sourceStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         sourceStage.setScene(scene);

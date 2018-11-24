@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<FlowPane minWidth="600.0" nodeOrientation="LEFT_TO_RIGHT" prefWrapLength="600.0" stylesheets="@../StyleSheets/game.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.GameController">
+<FlowPane minWidth="600.0" nodeOrientation="LEFT_TO_RIGHT" prefWrapLength="600.0" stylesheets="@../StyleSheets/Maiin.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.GameController">
    <children>
       <VBox id="player1Fields" alignment="CENTER" prefWidth="300.0">
          <children>

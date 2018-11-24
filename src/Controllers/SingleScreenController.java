@@ -36,6 +36,7 @@ public class SingleScreenController {
         Parent root =  loader.load();
         SinglePlayerGameController tc = loader.getController();
         tc.setPlayer1Name(nameField.getText());
+        tc.setUpPlayerNames();
         tc.setTarget(targetField.getText());
         Stage sourceStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
