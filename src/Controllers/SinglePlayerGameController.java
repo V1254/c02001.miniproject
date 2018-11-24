@@ -5,8 +5,13 @@ import Application.Game;
 import Model.Dice;
 import Model.DiceImage;
 import Model.Player;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
@@ -14,7 +19,9 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.Optional;
@@ -43,7 +50,7 @@ public class SinglePlayerGameController implements Initializable {
     private ImageView playerLeadImage, computerLeadImage;
 
     @FXML
-    private ImageView backButton;
+    private Button backButton;
 
 
     private Player player1;
@@ -61,7 +68,7 @@ public class SinglePlayerGameController implements Initializable {
 
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources){
         game = new Game(new Dice(), player1, computer);
         player1.setColor("blue");
         computer.setColor("red");
@@ -245,6 +252,21 @@ public class SinglePlayerGameController implements Initializable {
             }
         }
     }
+
+    @FXML
+    public void onBack(ActionEvent event){
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/Screens/playerScreen.fxml"));
+            Stage sourceStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            sourceStage.setScene(scene);
+        } catch (IOException e){
+            System.out.println("Error loading Previous Screen" + e.getMessage());
+        }
+
+    }
+
+
 }
 
 

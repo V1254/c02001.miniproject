@@ -130,7 +130,15 @@
       </VBox>
       <VBox alignment="CENTER">
          <children>
-            <ImageView fx:id="backButton" fitHeight="52.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBack" text="Back">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/backImage.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </VBox>
       <HBox alignment="CENTER" prefHeight="35.0" prefWidth="35.0" spacing="8.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
