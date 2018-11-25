@@ -1,8 +1,5 @@
 package Controllers;
 
-import Application.Game;
-import Model.Dice;
-import Model.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,10 +22,17 @@ public class TwoPlayerController {
     Button playButtons;
 
     @FXML
-    TextField player1NameField,player2NameField;
+    TextField player1NameField, player2NameField;
 
     @FXML
     TextField targetScore;
+
+    /**
+     * Returns to the main screen
+     *
+     * @param event
+     * @throws IOException If main.fxml is not found under Screens Package.
+     */
 
     public void goBack(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Screens/main.fxml"));
@@ -37,7 +41,7 @@ public class TwoPlayerController {
         sourceStage.setScene(scene);
     }
 
-    public void startGame(ActionEvent event) throws IOException{
+    public void startGame(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Screens/DualPlayerGameScreen.fxml"));
         Parent root = (Parent) loader.load();
         DualPlayerGameController controller = loader.getController();

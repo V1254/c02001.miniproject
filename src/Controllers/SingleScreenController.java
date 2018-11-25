@@ -19,10 +19,17 @@ public class SingleScreenController {
     Button backButton;
 
     @FXML
-    TextField nameField,targetField;
+    TextField nameField, targetField;
 
     @FXML
     Button playButton;
+
+    /**
+     * Loads and shows the main screen.
+     *
+     * @param event
+     * @throws IOException If main.fxml is not found under Screens.
+     */
 
     public void goBack(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Screens/main.fxml"));
@@ -31,9 +38,16 @@ public class SingleScreenController {
         sourceStage.setScene(scene);
     }
 
-    public void startGame(ActionEvent event) throws IOException{
+    /**
+     * Loads Single Player Game Screen and sets the field with the values provided.
+     *
+     * @param event
+     * @throws IOException If SinglePlayerGame.fxml is not found under Screens.
+     */
+
+    public void startGame(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Screens/SinglePlayerGameScreen.fxml"));
-        Parent root =  loader.load();
+        Parent root = loader.load();
         SinglePlayerGameController tc = loader.getController();
         tc.setPlayer1Name(nameField.getText());
         tc.setUpPlayerNames();

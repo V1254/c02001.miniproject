@@ -65,8 +65,7 @@ public class Player {
 
     public String getLastRollAsString(){
         int[] lastRoll = getLastRoll();
-        String formatted = String.format("[%d,%d,%d]",lastRoll[0],lastRoll[1],lastRoll[2]);
-        return formatted;
+        return String.format("[%d,%d,%d]",lastRoll[0],lastRoll[1],lastRoll[2]);
     }
 
     public void addRoll(int[] roll){
