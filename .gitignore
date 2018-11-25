@@ -18,7 +18,7 @@
 .idea/**/contentModel.xml
 
 # IntelliJ
-out/
+# out/
 
 *.iml
 modules.xml
