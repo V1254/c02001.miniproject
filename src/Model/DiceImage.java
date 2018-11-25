@@ -17,32 +17,49 @@ public class DiceImage {
         loadBlueImages();
     }
 
+    /**
+     * Populates redImages array with the red dice images under Images/red.
+     */
+
     private void loadRedImages() {
-        String location = "Images/red/";
         for (int i = 0; i < 6; i++) {
-            redImages[i] = new Image(location + "dice" + (i + 1) + ".png");
+            redImages[i] = new Image(getClass().getResourceAsStream("/Images/red/dice" + (i+1) + ".png"));
         }
     }
+
+    /**
+     * Populates blueImages array with the blue dice images under Images/blue.
+     */
 
     private void loadBlueImages() {
-        String location = "Images/blue/";
-
         for (int i = 0; i < 6; i++) {
-            blueImages[i] = new Image(location + "dice" + (i + 1) + ".png");
+            blueImages[i] = new Image(getClass().getResourceAsStream("/Images/blue/dice" + (i+1) + ".png"));
         }
     }
 
-    public List<Image> getImageList(String text, int... ints) {
-        List<Image> images = new ArrayList<>();
+    /**
+     * Returns a List of dice images.
+     * @param Color The color of the dice (red or blue).
+     * @param diceRolls an Array of each individual dice roll.
+     * @return List of images based on the value of each diceRoll and the Color.
+     */
 
-        if (text.equalsIgnoreCase("red")) {
-            Arrays.stream(ints).forEach(x -> images.add(getImage(redImages, x)));
+    public List<Image> getImageList(String Color, int... diceRolls) {
+        List<Image> images = new ArrayList<>();
+        if (Color.equalsIgnoreCase("red")) {
+            Arrays.stream(diceRolls).forEach(x -> images.add(getImage(redImages, x)));
         } else {
-            Arrays.stream(ints).forEach(x -> images.add(getImage(blueImages, x)));
+            Arrays.stream(diceRolls).forEach(x -> images.add(getImage(blueImages, x)));
         }
         return images;
-
     }
+
+    /**
+     * Returns the corresponding image based on passed in x value.
+     * @param images
+     * @param x
+     * @return
+     */
 
     private Image getImage(Image[] images, int x) {
         return images[x - 1];

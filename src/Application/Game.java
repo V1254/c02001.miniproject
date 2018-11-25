@@ -2,7 +2,6 @@ package Application;
 
 import Model.Dice;
 import Model.Player;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -30,18 +29,6 @@ public class Game {
         this.target = target;
     }
 
-    public Player getPlayer1() {
-        return player1;
-    }
-
-    public Player getPlayer2() {
-        return player2;
-    }
-
-    public int getTarget() {
-        return target;
-    }
-
     public boolean checkWin(){
         return player1.getScore() > target || player2.getScore() > target;
     }
@@ -63,6 +50,11 @@ public class Game {
         return rolls;
     }
 
+    /**
+     * Sorted array of player rolls.
+     * @param rolls
+     * @return 18 if all the rolls are the same, sum if only some are the same, else 1.
+     */
     public int getScoreFromRolls(int[] rolls) {
         if (rolls[0] == rolls[2]) { // if [x,?,x]  then ? = x in sorted array.
             return 18;

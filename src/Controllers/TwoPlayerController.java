@@ -41,6 +41,12 @@ public class TwoPlayerController {
         sourceStage.setScene(scene);
     }
 
+    /**
+     * Loads and shows the screen for the two player Game (DualPlayerGameController.fxml)
+     * @param event
+     * @throws IOException If DualPlayerGameController.fxml is not found under Screens package.
+     */
+
     public void startGame(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Screens/DualPlayerGameScreen.fxml"));
         Parent root = (Parent) loader.load();

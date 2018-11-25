@@ -16,9 +16,10 @@
 
 # Generated files
 .idea/**/contentModel.xml
+.idea/
 
 # IntelliJ
-# out/
+out/
 
 *.iml
 modules.xml

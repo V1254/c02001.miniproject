@@ -52,7 +52,6 @@ public class SinglePlayerGameController implements Initializable {
 
     private Player player1;
     private Player computer;
-    private Player leadPlayer;
     private DiceImage diceImage;
     private Game game;
     private boolean dialogFlag; // true if resetting through one of the created dialogs.
@@ -124,6 +123,7 @@ public class SinglePlayerGameController implements Initializable {
         if (game.checkWin()) {
             rollButton.setDisable(true);
             undoButton.setDisable(true);
+            this.dialogFlag = true;
             if (game.isDraw()) {
                 showDrawDialog();
                 return;
@@ -302,7 +302,7 @@ public class SinglePlayerGameController implements Initializable {
      */
 
     private void setLeadPlayerImage() {
-        leadPlayer = game.getLeadingPlayer();
+        Player leadPlayer = game.getLeadingPlayer();
         if (leadPlayer == null) {
             // no lead so set images to default
             playerLeadImage.setImage(null);
@@ -324,12 +324,11 @@ public class SinglePlayerGameController implements Initializable {
 
     private void showDrawDialog() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, " Game Has Ended in a Draw!! \n\n\n Thanks For Playing " + player1.getName(), new ButtonType("Close", ButtonBar.ButtonData.NO), new ButtonType("Play Again", ButtonBar.ButtonData.YES));
-        alert.setGraphic(new ImageView(new Image(getClass().getResource("../Images/draw.png").toExternalForm())));
+        alert.setGraphic(new ImageView(new Image(this.getClass().getResourceAsStream("/Images/draw.png"))));
         alert.setHeaderText(null);
         alert.setTitle("Draw!");
         alert.showAndWait();
         if (alert.getResult().getButtonData() == ButtonBar.ButtonData.YES) {
-            this.dialogFlag = true;
             onReset();
         }
     }
@@ -342,12 +341,11 @@ public class SinglePlayerGameController implements Initializable {
 
     private void showWinnerDialog(Player player) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Congratulations " + player.getName() + ", You are Victorious!!", new ButtonType("Close", ButtonBar.ButtonData.NO), new ButtonType("Play Again", ButtonBar.ButtonData.YES));
-        alert.setGraphic(new ImageView(new Image(getClass().getResource("../Images/winner.png").toExternalForm())));
+        alert.setGraphic(new ImageView(new Image(this.getClass().getResourceAsStream("/Images/winner.png"))));
         alert.setHeaderText(null);
         alert.setTitle(player.getName() + " Wins!!");
         alert.showAndWait();
         if (alert.getResult().getButtonData() == ButtonBar.ButtonData.YES) {
-            this.dialogFlag = true;
             onReset();
         }
     }
@@ -358,12 +356,11 @@ public class SinglePlayerGameController implements Initializable {
 
     private void showLoserDialog() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "You Have Been Defeated " + player1.getName() + ",Computer Wins!!", new ButtonType("Close", ButtonBar.ButtonData.NO), new ButtonType("Try Again?", ButtonBar.ButtonData.YES));
-        alert.setGraphic(new ImageView(new Image(getClass().getResource("../Images/bronze.png").toExternalForm())));
+        alert.setGraphic(new ImageView(new Image(this.getClass().getResourceAsStream("/Images/bronze.png"))));
         alert.setHeaderText(null);
         alert.setTitle("Computer Wins");
         alert.showAndWait();
         if (alert.getResult().getButtonData() == ButtonBar.ButtonData.YES) {
-            this.dialogFlag = true;
             onReset();
         }
     }

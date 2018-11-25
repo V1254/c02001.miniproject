@@ -282,7 +282,7 @@ public class DualPlayerGameController implements Initializable {
 
     private void showDrawDialog() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, " Game Has Ended in a Draw!! \n\n\n Thanks For Playing " + player1.getName() + " & " + player2.getName(), new ButtonType("Close", ButtonBar.ButtonData.NO), new ButtonType("Play Again", ButtonBar.ButtonData.YES));
-        alert.setGraphic(new ImageView(new Image(getClass().getResource("../Images/draw.png").toExternalForm())));
+        alert.setGraphic(new ImageView(new Image(this.getClass().getResourceAsStream("/Images/draw.png"))));
         alert.setHeaderText(null);
         alert.setTitle("Draw!!");
         alert.showAndWait();
@@ -299,7 +299,7 @@ public class DualPlayerGameController implements Initializable {
 
     private void showWinnerDialog(Player player) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Congratulation " + player.getName() + ", You are the Victor!", new ButtonType("Close", ButtonBar.ButtonData.NO), new ButtonType("Play Again", ButtonBar.ButtonData.YES));
-        alert.setGraphic(new ImageView(new Image(getClass().getResource("../Images/winner.png").toExternalForm())));
+        alert.setGraphic(new ImageView(new Image(this.getClass().getResourceAsStream("/Images/winner.png"))));
         alert.setHeaderText(null);
         alert.setTitle(player.getName() + " Wins!");
         alert.showAndWait();
