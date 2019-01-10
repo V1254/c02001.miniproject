@@ -3,11 +3,11 @@
 This assignment is worth **55%** of the overall module mark and the mark is provided out of **100**:
 
 ## Marks
-* *Part1:*  **??/20**
-* *Part2:* **??/20**
-* *Part3:* **??/40**
-* *Part4:*  **??/20**
-* *Total:*  **??/100**
+* *Part1:*  **20/20**
+* *Part2:* **20/20**
+* *Part3:* **32/40** No Animations
+* *Part4:*  **18/20**
+* *Total:*  **90/100**
 
 ## Running
 The game can be played by simply opening the .jar file.
